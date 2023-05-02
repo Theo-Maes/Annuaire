@@ -84,7 +84,7 @@ const AdminSalarie:NextPage = () => {
 			</div>
 		</div>
 
-		<div className="flex bg-base-100">
+		<div className="flex bg-base-100" style={{borderBottom: "1px solid gray;"}}>
 				<form onSubmit={saveData}>
 					<div className="flex-none">
 						<table className="table table-compact w-full">
@@ -137,8 +137,8 @@ const AdminSalarie:NextPage = () => {
 									<th></th>
 									<th style={{ textAlign: 'center' }}><button type="submit" className='btn'>Enregistrer</button></th>
 									<th></th>
-									<th style={{ textAlign: 'center' }}><button className='btn' onClick={(e) => { addRow(); e.preventDefault(); } }>Ajouter</button></th>
 									<th></th>
+									<th style={{ textAlign: 'center' }}><button className='btn' onClick={(e) => { addRow(); e.preventDefault(); } }>Ajouter</button></th>
 									<th></th>
 									<th></th>
 								</tr>
