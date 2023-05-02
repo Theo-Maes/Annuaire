@@ -1,5 +1,3 @@
-import Sidebar from "@/components/SideBar";
-import { useState, useEffect } from 'react'
 import { NextPage } from "next";
 import React from 'react'
 import Link from "next/link";

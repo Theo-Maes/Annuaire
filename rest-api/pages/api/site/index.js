@@ -1,8 +1,17 @@
+import express from 'express';
+import cors from 'cors';
 import connection from '../../../lib/db';
 
-export default async function handler(req, res) {
-    connection.query('SELECT * FROM site s INNER JOIN type t ON s.NUM_TYPE = t.NUM_TYPE WHERE ETAT = "A"', (err, rows) => {
+const app = express();
+
+app.use (express.json());
+app.use(cors());
+
+app.get('/api/site', (req, res) => {
+	connection.query('SELECT * FROM site s INNER JOIN type t ON s.NUM_TYPE = t.NUM_TYPE WHERE ETAT = "A"', (err, rows) => {
 		if (err) throw err;
 		res.json(rows);
 	});
-};
+});
+
+export default app;

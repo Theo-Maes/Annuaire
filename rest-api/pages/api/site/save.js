@@ -1,6 +1,12 @@
+import express from 'express';
+import cors from 'cors';
 import connection from '../../../lib/db';
 
-export default async function handler(req, res) {
+const app = express();
+
+app.use(cors());
+
+app.post('/api/site/save', (req, res) => {
     const data = req.body;
 
 	const updateQuery = 'UPDATE site SET VILLE = ?, NUM_TYPE = ? WHERE NUM_SITE = ?';
@@ -48,4 +54,6 @@ export default async function handler(req, res) {
 
 		}
 	});
-};
+});
+
+export default app;
