@@ -13,8 +13,7 @@ app.post('/api/salarie/save', (req, res) => {
 
 	const updateQuery = 'UPDATE salarie SET NOM = ?, PRENOM = ?, TELEPHONE_FIXE = ?, TELEPHONE_PORTABLE = ?, EMAIL = ?, NUM_SERV = ?, NUM_SITE = ? WHERE NUM_SAL = ?';
 	const insertQuery = 'INSERT INTO salarie (NOM, PRENOM, TELEPHONE_FIXE, TELEPHONE_PORTABLE, EMAIL, NUM_SERV, NUM_SITE) VALUES (?,?,?,?,?,?,?)';
-	// const deleteQuery = 'DELETE FROM services WHERE id NOT IN (?);';
-	const deleteQuery = 'UPDATE service SET ETAT = "X" WHERE NUM_SERV NOT IN (?)';
+	const deleteQuery = 'DELETE FROM salarie WHERE NUM_SAL NOT IN (?);';
 
 	const ids = [];
 
@@ -28,9 +27,9 @@ app.post('/api/salarie/save', (req, res) => {
 		ids.push(0);
 	}
 
-	// connection.query(deleteQuery, [ids], (err, rows) => {
-	// 	if (err) throw err;
-	// });
+	connection.query(deleteQuery, [ids], (err, rows) => {
+		if (err) throw err;
+	});
 
 	data.forEach((row) => {
 		if(row.NUM_SAL != null) {

@@ -11,9 +11,8 @@ app.post('/api/site/save', (req, res) => {
 
 	const updateQuery = 'UPDATE site SET VILLE = ?, NUM_TYPE = ? WHERE NUM_SITE = ?';
 	const insertQuery = 'INSERT INTO site (VILLE,NUM_TYPE) VALUES (?,?)';
-	// const deleteQuery = 'DELETE FROM sites WHERE id NOT IN (?);';
-	const deleteQuery = 'UPDATE site SET ETAT = "X" WHERE NUM_SITE NOT IN (?);';
-	const testQuery = 'SELECT * FROM service sv INNER JOIN site si ON sv.NUM_SITE = si.NUM_SITE WHERE si.NUM_SITE NOT IN (?) AND sv.ETAT = "A"';
+	const deleteQuery = 'DELETE FROM sites WHERE id NOT IN (?)';
+	const testQuery = 'SELECT * FROM service sv INNER JOIN site si ON sv.NUM_SITE = si.NUM_SITE WHERE si.NUM_SITE NOT IN (?)';
 
 	const ids = [];
 	data.forEach((row) => {

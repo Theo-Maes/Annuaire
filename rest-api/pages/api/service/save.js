@@ -11,8 +11,7 @@ app.post('/api/service/save', (req, res) => {
 
 	const updateQuery = 'UPDATE service SET service = ?, NUM_SITE = ? WHERE NUM_SERV = ?';
 	const insertQuery = 'INSERT INTO service (SERVICE,NUM_SITE) VALUES (?,?)';
-	// const deleteQuery = 'DELETE FROM services WHERE id NOT IN (?);';
-	const deleteQuery = 'UPDATE service SET ETAT = "X" WHERE NUM_SERV NOT IN (?)';
+	const deleteQuery = 'DELETE FROM service WHERE NUM_SERV NOT IN (?)';
 	const testQuery = 'SELECT * FROM salarie sl INNER JOIN service sv ON sl.NUM_SERV = sv.NUM_SERV WHERE sv.NUM_SERV NOT IN (?)';
 
 	const ids = [];
