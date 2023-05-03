@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { query } from 'express';
 import cors from 'cors';
 import connection from '../../lib/db';
 
@@ -8,7 +8,15 @@ app.use (express.json());
 app.use(cors());
 
 app.get('/api/search', (req, res) => {
-	connection.query('SELECT * FROM salarie sl INNER JOIN service sv ON sl.NUM_SERV = sv.NUM_SERV INNER JOIN site si ON sl.NUM_SITE = si.NUM_SITE WHERE sl.NOM LIKE "%'+req.query.nom+'%"', (err, rows) => {
+    console.log(req.query);
+
+    let searchQuery = 'SELECT * FROM salarie sl INNER JOIN service sv ON sl.NUM_SERV = sv.NUM_SERV INNER JOIN site si ON sl.NUM_SITE = si.NUM_SITE WHERE sl.NOM LIKE "%'+req.query.nom+'%"';
+
+    if(req.query.site != "none") {
+        searchQuery += " AND sl.NUM_SITE = " + req.query.site;
+    }
+
+	connection.query(searchQuery, (err, rows) => {
 		if (err) throw err;
 		res.json(rows);
 	});
