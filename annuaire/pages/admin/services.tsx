@@ -77,15 +77,15 @@ const AdminServices:NextPage = () => {
 
 		<>
 			<div className="container mx-auto" style={{borderBottom: "1px solid gray;"}}>
-				<div className="flex justify-center bg-base-100">
+				<div className="flex justify-center">
 					<Tabs page={"services"} />
 				</div>
 			</div>
 		
 		
 			<div className="container mx-auto">
-				<div className="flex justify-center bg-base-100">
-					<div className="flex bg-base-100">
+				<div className="flex justify-center">
+					<div className="flex">
 						<div className="flex-none">
 							<table className="table w-full">
 								<thead>

@@ -79,12 +79,12 @@ const AdminSalarie:NextPage = () => {
 	return (
 		<>
 		<div className="container mx-auto">
-			<div className="flex justify-center bg-base-100">
+			<div className="flex justify-center">
 				<Tabs page={"salaries"} />
 			</div>
 		</div>
 
-		<div className="flex bg-base-100" style={{borderBottom: "1px solid gray;"}}>
+		<div className="flex" style={{borderBottom: "1px solid gray;"}}>
 				<form onSubmit={saveData}>
 					<div className="flex-none">
 						<table className="table table-compact w-full">
