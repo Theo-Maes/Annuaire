@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react'
 import { NextPage } from "next";
 import React from 'react'
 import Tabs from "@/components/tabs";
+import { useRouter } from 'next/router';
 
 
 const AdminSites:NextPage = () => {
+	const router = useRouter();
 	const [data, setData] = useState([]);
 	const [typeData, setTypeData] = useState([]);
 	
@@ -60,10 +62,11 @@ const AdminSites:NextPage = () => {
 		})
 		.then(response => {
 			if (!response.ok) {
-				alert("Attention :\n un service est lié au site, modifier l'affectation des services en concéquence. \n Aucune modification sauvegardée");
+				alert("Attention :\n Au moins un service est lié au site, modifier l'affectation des services en conséquences. \n Aucune modification sauvegardée");
 			} else {
 				alert('Les données ont été sauvegardées !');
 			}
+			router.reload();
 		})
 		.catch(error => {
 			alert('Une erreur est survenue lors de la requête : ' + error.message);

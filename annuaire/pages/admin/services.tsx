@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react'
 import { NextPage } from "next";
 import React from 'react'
 import Tabs from "@/components/tabs";
-
+import { useRouter } from 'next/router';
 
 const AdminServices:NextPage = () => {
+	const router = useRouter();
 	const [data, setData] = useState([]);
 	const [sitesData, setSitesData] = useState([]);
 	
@@ -57,8 +58,17 @@ const AdminServices:NextPage = () => {
 			},
 			body: JSON.stringify(data)
 		})
-		
-		alert('Les données ont été sauvegardées !');
+		.then(response => {
+			if (!response.ok) {
+				alert("Attention :\n Au moins un salarié est lié au service, modifier l'affectation des salariés en conséquences. \n Aucune modification sauvegardée");
+			} else {
+				alert('Les données ont été sauvegardées !');
+			}
+			router.reload();
+		})
+		.catch(error => {
+			alert('Une erreur est survenue lors de la requête : ' + error.message);
+		});
 	}
 
 
