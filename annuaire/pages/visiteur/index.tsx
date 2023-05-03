@@ -4,7 +4,8 @@ import React from 'react'
 
 const VisiteurIndex:NextPage = () => {
 	const [searchTerm, setSearchTerm] = useState('');
-	const [searchSiteTerm, setSearchSiteTerm] = useState('');
+	const [searchSiteTerm, setSearchSiteTerm] = useState('none');
+	const [searchServiceTerm, setSearchServiceTerm] = useState('none');
 	const [searchResults, setSearchResults] = useState([]);
 	const [dataService, setDataService] = useState([]);
 	const [dataSite, setDataSite] = useState([]);
@@ -19,25 +20,25 @@ const VisiteurIndex:NextPage = () => {
 		fetchSites();
 	}, []);
 
-	// useEffect(() => {
-	// 	async function fetchService() {
-	// 	  const response = await fetch('http://localhost:3001/api/service');
-	// 	  const data = await response.json();
-	// 	  setDataService(data);
-	// 	}
-	// 	fetchService();
-	// }, [dataSite]);
+	useEffect(() => {
+		async function fetchService() {
+		  const response = await fetch(`http://localhost:3001/api/service/search?site=${searchSiteTerm}`);
+		  const data = await response.json();
+		  setDataService(data);
+		}
+		fetchService();
+	}, [searchSiteTerm]);
 
 
 	useEffect(() => {
 		const getSearchResults = async () =>	 {
-			const response = await fetch(`http://localhost:3001/api/search?nom=${searchTerm}&site=${searchSiteTerm}`);
+			const response = await fetch(`http://localhost:3001/api/search?nom=${searchTerm}&site=${searchSiteTerm}&service=${searchServiceTerm}`);
 			const data = await response.json();
 			setSearchResults(data);
 		};
 
 		getSearchResults();
-	}, [searchSiteTerm, searchTerm]);
+	}, [searchServiceTerm, searchSiteTerm, searchTerm]);
 
 	return (
 		<div>
@@ -52,6 +53,14 @@ const VisiteurIndex:NextPage = () => {
 				<option value="none" selected>rechercher par site</option>
 				{dataSite.map((site) => (
 					<option key={site.NUM_SITE} value={site.NUM_SITE}> {site.VILLE}</option>
+				))}
+			</select>
+
+
+			<select className='select select-bordered select-sm w-full max-w-xs' onChange={(e) => setSearchServiceTerm(e.target.value)}>
+				<option value="none" selected>rechercher par service</option>
+				{dataService.map((service) => (
+					<option key={service.NUM_SERV} value={service.NUM_SERV}> {service.SERVICE}</option>
 				))}
 			</select>
 
