@@ -106,16 +106,6 @@ export default function Home() {
 					</ul>
 					</>
 				)}
-
-				{endpoint.response && (
-					<>
-					<br />
-					<p>Example response:</p>
-					<pre>
-						<code>{endpoint.response}</code>
-					</pre>
-					</>
-				)}
 				</div>
 			))}
 			</div>
