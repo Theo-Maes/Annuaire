@@ -17,7 +17,7 @@ app.get('/api/search', (req, res) => {
 	}
 
 	if(req.query.service != "none") {
-		searchQuery += " AND sl.NUM_SERV = " + req.query.service;
+		searchQuery += " AND sv.SERVICE = '" + req.query.service+ "'";
 	}
 
 	connection.query(searchQuery, (err, rows) => {

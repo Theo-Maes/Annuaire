@@ -1,9 +1,9 @@
 
 export default function Sidebar({ page }) {
 	const menuItems = [
-		{ class: page === "sites" ? 'tab tab-lifted tab-active' : 'tab tab-lifted', label: 'sites', href:"/admin/sites" },
-		{ class: page === "services" ? 'tab tab-lifted tab-active' : 'tab tab-lifted', label: 'services', href:"/admin/services" },
-		{ class: page === "salaries" ? 'tab tab-lifted tab-active' : 'tab tab-lifted', label: 'salarie', href:"/admin/salarie" },
+		{ class: page === "sites" ? 'tab tab-lifted tab-active' : 'tab tab-lifted', label: 'Sites', href:"/admin/sites" },
+		{ class: page === "services" ? 'tab tab-lifted tab-active' : 'tab tab-lifted', label: 'Services', href:"/admin/services" },
+		{ class: page === "salaries" ? 'tab tab-lifted tab-active' : 'tab tab-lifted', label: 'Salariés', href:"/admin/salarie" },
 	  ];
   
 	return (

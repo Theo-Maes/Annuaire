@@ -10,10 +10,15 @@ export const Header:React.FC = () => {
 	  ];
 
 	return <header className="navbar bg-base-100" style={{ borderBottom: '2px solid gray' }}>
-		<div className="navbar-start px-3">
+		
+		<div className="navbar-start px-3" style={{width: '45%'}}>
 			<Link href="/">
 				<Image src={image1} style={{ objectFit: "contain", width: '50px' }} alt={"home image"}/>
 			</Link>
+		</div>
+
+		<div className="navbar-center">
+			Annuaire Entreprise
 		</div>
 
 	</header>;

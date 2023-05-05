@@ -9,16 +9,17 @@ app.use(cors());
 
 app.get('/api/service/search', (req, res) => {
 
-    let searchQuery = 'SELECT * FROM service WHERE NUM_SITE = ';
-
-    if(req.query.site == "none") {
-       return res.json(JSON.parse(JSON.stringify([])));
-    }
-
-	connection.query(searchQuery + req.query.site, (err, rows) => {
-		if (err) throw err;
-		res.json(rows);
-	});
+	if(req.query.site == "none") {
+		connection.query('SELECT * FROM service', (err, rows) => {
+			if (err) throw err;
+			return res.json(rows);
+		});   
+	} else {
+		connection.query('SELECT * FROM service WHERE NUM_SITE = ' + req.query.site, (err, rows) => {
+			if (err) throw err;
+			return res.json(rows);
+		});   
+	}
 });
 
 export default app;

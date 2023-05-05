@@ -33,7 +33,7 @@ const VisiteurFiche:NextPage = () => {
 								<tbody>
 									<tr>
 										<td>Prénom:</td>
-										<td>nom:</td>
+										<td>Nom:</td>
 									</tr>
 									<tr>
 										<td>{result.PRENOM}</td>
@@ -46,7 +46,7 @@ const VisiteurFiche:NextPage = () => {
 
 									<tr>
 										<td>Fixe:</td>
-										<td>portable:</td>
+										<td>Portable:</td>
 									</tr>
 									<tr>
 										<td>{result.TELEPHONE_FIXE}</td>
@@ -79,7 +79,7 @@ const VisiteurFiche:NextPage = () => {
 								</tbody>
 							</table>
 						</p>
-
+						<br />
 						<div className="card-actions justify-center">
 							<a className='btn btn-primary' href='/visiteur'>retour</a>
 						</div>

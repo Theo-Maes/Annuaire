@@ -59,6 +59,17 @@ const VisiteurIndex:NextPage = () => {
 									/>
 								</td>
 								<td>
+									<select className='select select-bordered select-sm w-full max-w-xs' onChange={(e) => setSearchServiceTerm(e.target.value)}>
+										<option value="none" disabled selected>rechercher par service</option>
+										<option value="none">aucun</option>
+										{dataService.filter((service, index, self) =>
+											index === self.findIndex(s => s.SERVICE === service.SERVICE)
+												).map((service) => (
+													<option key={service.NUM_SERV} value={service.SERVICE}> {service.SERVICE}</option>
+												))}
+									</select>
+								</td>
+								<td>
 									<select className='select select-bordered select-sm w-full max-w-xs' onChange={(e) => {
 										setSearchSiteTerm(e.target.value);
 										if (e.target.value === "none") {
@@ -73,16 +84,6 @@ const VisiteurIndex:NextPage = () => {
 										))}
 									</select>	
 								</td>
-								<td>
-									<select className='select select-bordered select-sm w-full max-w-xs' onChange={(e) => setSearchServiceTerm(e.target.value)}>
-										<option value="none" disabled selected>rechercher par service</option>
-										<option value="none">aucun</option>
-										{dataService.map((service) => (
-											<option key={service.NUM_SERV} value={service.NUM_SERV}> {service.SERVICE}</option>
-										))}
-									</select>
-								</td>
-								<td><button className='btn'>rechercher</button></td>
 							</tr>
 						</tbody>
 					</table>
@@ -96,8 +97,8 @@ const VisiteurIndex:NextPage = () => {
 				<table className="table table-compact w-full">
 					<thead>
 						<tr>
-							<th style={{ textAlign: 'center' }}>prenom</th>
 							<th style={{ textAlign: 'center' }}>nom</th>
+							<th style={{ textAlign: 'center' }}>prenom</th>
 							<th style={{ textAlign: 'center' }}>service</th>
 							<th style={{ textAlign: 'center' }}>ville</th>
 							<th></th>
@@ -106,8 +107,8 @@ const VisiteurIndex:NextPage = () => {
 					<tbody>
 						{searchResults.map((result, index) => (
 							<tr key={index}>
-								<td style={{ textAlign: 'center' }}>{result.PRENOM}</td>
 								<td style={{ textAlign: 'center' }}>{result.NOM}</td>
+								<td style={{ textAlign: 'center' }}>{result.PRENOM}</td>
 								<td style={{ textAlign: 'center' }}>{result.SERVICE}</td>
 								<td style={{ textAlign: 'center' }}>{result.VILLE}</td>
 								<td style={{ textAlign: 'center' }}><a className='btn' href={`/visiteur/fiche?id=${result.NUM_SAL}`}>plus</a></td>

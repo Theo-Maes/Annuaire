@@ -6,13 +6,11 @@ import React from 'react'
 const AdminIndex:NextPage = () => {
 	return (
 			<>
-			<div className="container mx-auto" style={{ borderBottom: "1px solid gray;" }}>
-				<div className="flex justify-center">
-					<Tabs page={null} />
+				<div className="container mx-auto" style={{ borderBottom: "1px solid gray;" }}>
+					<div className="flex justify-center">
+						<Tabs page={null} />
+					</div>
 				</div>
-			</div>
-			<div>
-			</div>
 			</>
 	);
 }
